@@ -24,7 +24,7 @@ db.on('connected', function(){
 });
 
 //empty call for checking
-app.post("/check",(req,res)=>{
+app.post("/checking",(req,res)=>{
     res.send("working");
 })
 
