@@ -6,10 +6,10 @@ const usermodel = require("./models/usermodel");
 var bodyParser = require('body-parser');
 const auth = require("./routes/auth");//authentication router
 var app = express();
+var logger =require("./config/logger")
 const morgan= require('winston')
 app.use(bodyParser.json());
 app.use("/auth/",auth);
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 //running on the port
 app.listen(1234,()=>{
     console.log("server connected");
@@ -25,6 +25,7 @@ db.on('connected', function(){
 
 //empty call for checking
 app.post("/checking",(req,res)=>{
+    logger.info("it is working");
     res.send("working");
 })
 
