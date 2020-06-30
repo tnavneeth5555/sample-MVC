@@ -11,11 +11,11 @@ const morgan= require('winston')
 app.use(bodyParser.json());
 app.use("/auth/",auth);
 //running on the port
-app.listen(1234,()=>{
+app.listen(process.env.PUBLIC_PORT,()=>{
     console.log("server connected");
 })
 //Set up default mongoose connection
-var mongoDB = 'mongodb+srv://navneeth2000:Navneeth2000@cluster0-tlpr0.mongodb.net/test?retryWrites=true&w=majority';
+var mongoDB = process.env.PUBLIC_MONGO_URI;
 mongoose.connect(mongoDB, { useNewUrlParser: true ,useCreateIndex: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
